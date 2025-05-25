@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Web Storage</h1>
+    <div>
+        <h2>Local Storage</h2>
+        <div id="localStorage"></div>
+        <h2>Session Storage</h2>
+        <div id="sessionStorage"></div>
+    </div>
+    <script>
+        sessionStorage.setitem("nome","Juste Belmont");
+        document.getElementById("sessionStorage").innerHTML = sessionStorage.getItem("nome");
+
+        localStorage.setItem("nome", "Dracula");
+        document.getElementById("localStorage").innerHTML = localStorage.getItem("nome");
+
+        let cadastroDevs = [
+            { nome: "Juste Belmont", idade: 21},
+            { nome: "Dracula", idade: 446},
+            { nome: "Soma Cruz", idade: 25},
+        ];
+        localStorage.getItem("devs", JSON.stringify(cadastroDevs));
+
+        let devs = JSON.parse(localStorage.getItem("devs"));
+        let ldDiv = document.getElementById("localStorage").innerHTML;
+        document.getElementById("localStorage").innerHTML = ldDiv + "<br>" + devs[1].nome;
+    </script>
+</body>
+</html>
